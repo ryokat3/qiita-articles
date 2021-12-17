@@ -4,6 +4,24 @@ tags:  python=3.6|3.7|3.8|3.9|3.10,ubuntu=21.10
 id:    a5b5328c93bad615c5b2
 -->
 
+Pythonの開発環境構築を次のステップで行う。
+
+1. [pyenv](#pyenv) :: 複数バージョンの実行環境を構築
+2. [venv](#venv) :: 仮想環境を構築
+3. [poetry](#poetry) :: 仮想環境のパッケージを管理
+
+これらのツールは基本的にシェルの環境変数を書き換えながら、
+散らばったディレクトリをうまくまとめながら、異なった
+バージョンの実行環境と仮想環境を提供している。
+
+Virtual Machine や Docker のように各仮想環境がきれいに
+分離しているわけではない。そのためツールの使い方によって
+環境を破壊する可能性がある。
+
+各ツールの実行内容を理解の助けとして、各ツールで作られるディレクトリやファイルの関係を下記の図に示す。
+
+![Python仮想環境](https://raw.githubusercontent.com/wak109/qiita-articles/main/qiita/img/python_dev_env.drawio.png)
+
 ## pyenv
 
 - 複数バージョンのpythonを切り替えて使えることができる。
