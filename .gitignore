@@ -1,2 +1,4 @@
 access_token.txt
+qiita_sync.py
+qiita_sync_output.txt
 */__pycache__
