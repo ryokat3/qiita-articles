@@ -1,0 +1,28 @@
+name: pytest
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  qiita_sync_check:
+    name: Run qiita_sync check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install qiita-sync
+        run: |
+          curl -OL https://raw.githubusercontent.com/wak109/qiita-sync/main/qiita_sync/qiita_sync.py
+      - name: Run qiita-sync
+        run: python qiita_sync.py check qiita-article
+        env: 
+          QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
