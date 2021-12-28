@@ -1,15 +1,13 @@
-name: Qiita Synched
+name: Qiita Sync
 
 on:
-  schedule:
-    - cron: "0 * * * *"
   push:
     branches:
       - main
 
 jobs:
   qiita_sync_check:
-    name: Run qiita-sync check
+    name: Run qiita-sync
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,9 +22,8 @@ jobs:
       - name: Install qiita-sync
         run: |
           curl -OL https://raw.githubusercontent.com/wak109/qiita-sync/main/qiita_sync/qiita_sync.py
-      - name: Run qiita-sync check
+      - name: Run qiita-sync
         run: |
-          python qiita_sync.py check . > ./qiita_sync_output.txt
-          [ ! -s "qiita_sync_output.txt" ] || exit 1
+          python qiita_sync.py sync .
         env: 
           QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
