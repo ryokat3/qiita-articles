@@ -19,7 +19,7 @@ pythonの仮想環境で開発を行うために必要なツールのインス�
 - 開発にはpipは使いません
 </details>
 
-![Python仮想環境](https://raw.githubusercontent.com/wak109/qiita-articles/main/qiita/img/python_dev_env.drawio.png)
+![Python仮想環境](../img/python_dev_env.drawio.png)
 
 ## pyenv
 
