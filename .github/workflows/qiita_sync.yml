@@ -27,3 +27,10 @@ jobs:
           python qiita_sync.py sync .
         env: 
           QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
+      - name: Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git ls-files . | grep '\.md$' | xargs git add
+          git commit -m "Update"
+          git push
