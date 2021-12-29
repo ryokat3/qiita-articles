@@ -7,18 +7,15 @@ on:
 
 jobs:
   qiita_sync_check:
-    name: Run qiita-sync
+    name: Run qiita-sync sync
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.9]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.9'
       - name: Install qiita-sync
         run: |
           curl -OL https://raw.githubusercontent.com/wak109/qiita-sync/main/qiita_sync/qiita_sync.py
