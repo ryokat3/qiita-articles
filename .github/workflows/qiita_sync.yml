@@ -34,6 +34,6 @@ jobs:
           then
             git config user.name github-actions
             git config user.email github-actions@github.com
-            git commit -m "Update"
+            git commit -m "updated by qiita-sync"
             git push
           fi
