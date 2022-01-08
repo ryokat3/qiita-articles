@@ -1,10 +1,8 @@
 # Qiita Articles
 
-![Qiita Sync](https://github.com/wak109/qiita-articles/actions/workflows/qiita_sync_check.yml/badge.svg)
+![Qiita Sync](https://github.com/ryokat3/qiita-articles/actions/workflows/qiita_sync_check.yml/badge.svg)
 
-This GitHub repositry is synchronized with [Qiita articles](https://qiita.com/wak109).
+This GitHub repositry keeps to be automatically synchronized with [my Qiita articles](https://qiita.com/ryokat3).
 
-# Overview
-
-GitHub Actions tiggers [qiita-sync](https://github.com/wak109/qiita-sync), and it synchronize
-this GitHub repository with Qiita articles.
+See more details in [qiita-sync](https://github.com/ryokat3/qiita-sync), with which you can make your
+GitHub repository to be synchronized with Qiita site.
