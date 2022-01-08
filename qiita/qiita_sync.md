@@ -1,5 +1,5 @@
 <!--
-title:  GitHub連携でQiitaの記事を素敵な執筆環境で！
+title:  GitHub連携でQiitaを素敵な執筆環境で！
 tags:   qiita,markdown,github
 -->
 
@@ -15,9 +15,11 @@ tags:   qiita,markdown,github
 
 仕組みは簡単です。以下の図をご覧ください。
 
-![Qiita_Sync_Overview](../img/qiita_sync.drawio.png)
 
-_画像素材: <a href='https://pngtree.com/so/Man'>Man png from pngtree.com/</a> [^1]_
+![Qiita Sync](../img/qiita_sync.drawio.png)
+
+_<font size="2">画像素材: <a href='https://pngtree.com/so/Man'>Man png from pngtree.com/</a></font>[^1]_
+
 
 要するに、
 
@@ -26,5 +28,25 @@ _画像素材: <a href='https://pngtree.com/so/Man'>Man png from pngtree.com/</a
 
 これだけです。2. の GitHub Actions による自動化の方法を説明いたします。
 
+## 準備
+
+### Qiita Access Token の生成
+
+記事の投稿に [Qiita API v2](https://qiita.com/api/v2/docs) を使うので
+秘密鍵である Access Token が必要になります。Access Token は Qiita の
+ユーザ画面から、
+
+1. [Qiita Account Applications](https://qiita.com/settings/applications) を開く
+2. "Generate new token" をクリック
+3. "Desciption" に `QIITA_ACCESS_TOKEN` と入力
+4. "Scopes" の "read_qiita" と "write_qiita" をチェック（下図）
+5. "Generate token" をクリック
+
+![Qiita Access Token 生成画面](../img/generate_qiita_access_token.png)
+
+
+
+## 参照
 
 [^1]: [link to illustration (pinterest)](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector)
+
