@@ -3,11 +3,11 @@ title:  GitHub連携でQiita記事を素敵な執筆環境で！
 tags:   qiita,markdown,github
 -->
 
-## 「素敵な執筆環境」とは？
+# 「素敵な執筆環境」とは？
 
 心地よいソファーだったり、甘えん坊だけどキーボードの上だけは避けてくれる猫のことではなく、vi とか emacs とか vscode とか、お気に入りのエディタを使った執筆環境を実現するために開発した Qiita Sync の紹介です。
 
-### Qiita の記事を執筆する時の不満
+## Qiita の記事を執筆する時の不満
 
 個人的には以下のような Qiita 公式の Web アプリによる執筆時の不満を解消するため、この執筆環境を開発しました。
 
@@ -17,7 +17,7 @@ tags:   qiita,markdown,github
 
 - Markdown の Table は等幅フォントで編集したい。
 
-### vi で記事を書いて GitHub に push するだけ
+## vi で記事を書いて GitHub に push するだけ
 
 あとは Qiita Sync にお任せです。
 
@@ -26,8 +26,7 @@ tags:   qiita,markdown,github
 
 ![Qiita Sync](../img/qiita_sync.drawio.png) [^1]
 
-
-### 記事の同期も自動でチェック
+## 記事の同期も自動でチェック
 
 Qiitaの記事をブラウザでチャチャっと作ったり、更新したり、そんな時は GitHub との
 同期が取れなくなることもあります。でも大丈夫、同期がとれないことは、GitHub の画面で確認できるし、
@@ -42,16 +41,15 @@ GitHub からメールのお知らせが届きます。
 
 ![Qiita Sync Check](../img/qiita_sync_check.drawio.png) [^1]
 
-
-### インストールしなくていい、使い方も覚えなくていい
+## インストールしなくていい、使い方も覚えなくていい
 
 メインの機能を提供する Qiita Sync は python の CLI コマンドですが、GitHub Actions 上で動作するので、
 コマンドをインストールしたり、使い方や引数を覚えたりする必要はありません。
 もちろん python のインストールも不要です。
 
-## 準備
+# 準備
 
-### Qiita Access Token の生成
+## Qiita Access Token の生成
 
 記事の投稿に [Qiita API v2](https://qiita.com/api/v2/docs) を使うので
 秘密鍵である Access Token が必要になります。Access Token は Qiita の
@@ -66,7 +64,7 @@ GitHub からメールのお知らせが届きます。
 
 ![Qiita Access Token 生成画面](../img/generate_qiita_access_token.png)
 
-### Qiita Access Token の登録
+## Qiita Access Token の登録
 
 Qiita 同期をする GitHub の repository を一つ用意する。できれば専用の repository を
 用意することをお勧めします。
@@ -79,14 +77,16 @@ Qiita 同期をする GitHub の repository を一つ用意する。できれば
 
 ![GitHub Access Token 登録画面](../img/github_save_access_token.png)
 
-### GitHub Actions の設定
+## GitHub Actions の設定
 
 以下の２つの YAML ファイルを作成する。
 
 - `.github/workflows/qiita_sync_check.yml`
 - `.github/workflows/qiita_sync.yml`
 
-特に変更の必要はないが `qiita_sync_check.yml` の `cron: "29 17 * * *"` は変更して欲しい。
+どちらのファイルも基本的にこのまま変更なしに使用できる。
+
+ただし `qiita_sync_check.yml` の `cron: "29 17 * * *"` の部分は変更して欲しい。
 Qiita の記事の同期をチェックする GitHub Actions を cron で定期的に動かすのだが、利用者全員が
 同じ時間を設定すると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるため設定の
 変更をお願いしたい。
@@ -97,7 +97,6 @@ cron の設定は変更する
 
 下記の例は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになる。
 もちろん一週間に一度に設定でも、毎時間起動しても構わない。
-
 
 ```yaml:.github/workflows/qiita_sync_check.yml
 name: Qiita Sync Check
@@ -134,6 +133,8 @@ jobs:
           QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
 ```
 
+`qiita_sync.yml` は Qiita と GitHub の内容を比較して、内容に差異がある場合は
+最終更新時間が新しい方を正とする。
 
 ```yaml:.github/workflows/qiita_sync.yml
 name: Qiita Sync
@@ -176,9 +177,10 @@ jobs:
           fi
 ```
 
+この２つのファイルを GitHub に push すると同期が始まる。これで準備完了。
 
 
 
-## 参照
+# 脚注
 
 [^1]: [画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) の一部は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。
