@@ -59,12 +59,122 @@ GitHub からメールのお知らせが届きます。
 
 1. [Qiita Account Applications](https://qiita.com/settings/applications) を開く
 2. "Generate new token" をクリック
-3. "Desciption" に `QIITA_ACCESS_TOKEN` と入力
+3. "Desciption" は適当な説明を入力。
 4. "Scopes" の "read_qiita" と "write_qiita" をチェック（下図）
 5. "Generate token" をクリック
 6. 生成された Access Token はコピーして保存しておく
 
 ![Qiita Access Token 生成画面](../img/generate_qiita_access_token.png)
+
+### Qiita Access Token の登録
+
+Qiita 同期をする GitHub の repository を一つ用意する。できれば専用の repository を
+用意することをお勧めします。
+
+1. GitHub repository の GUI から Settings >> Secrets で "Actions secrets" の画面を表示
+2. 右上の "New repository secret" のボタンをクリック
+3. Name には `QIITA_ACCESS_TOKEN` と入力
+4. Value には Qiita で生成した Access Token を入力（下図）
+5. "Add secret"をクリックして登録完了
+
+![GitHub Access Token 登録画面](../img/github_save_access_token.png)
+
+### GitHub Actions の設定
+
+以下の２つの YAML ファイルを作成する。
+
+- `.github/workflows/qiita_sync_check.yml`
+- `.github/workflows/qiita_sync.yml`
+
+特に変更の必要はないが `qiita_sync_check.yml` の `cron: "29 17 * * *"` は変更して欲しい。
+Qiita の記事の同期をチェックする GitHub Actions を cron で定期的に動かすのだが、利用者全員が
+同じ時間を設定すると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるため設定の
+変更をお願いしたい。
+
+::: warn
+cron の設定は変更する
+:::
+
+下記の例は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになる。
+もちろん一週間に一度に設定でも、毎時間起動しても構わない。
+
+
+```yaml:.github/workflows/qiita_sync_check.yml
+name: Qiita Sync Check
+
+on:
+  schedule:
+    - cron: "29 17 * * *"
+  workflow_run:
+    workflows: ["Qiita Sync"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  qiita_sync_check:
+    name: qiita-sync check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install qiita-sync
+        run: |
+          curl -OL https://raw.githubusercontent.com/ryokat3/qiita-sync/v1.0.0/qiita_sync/qiita_sync.py
+      - name: Run qiita-sync check
+        run: |
+          python qiita_sync.py check . > ./qiita_sync_output.txt
+          cat ./qiita_sync_output.txt
+          [ ! -s "qiita_sync_output.txt" ] || exit 1
+        env: 
+          QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
+```
+
+
+```yaml:.github/workflows/qiita_sync.yml
+name: Qiita Sync
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  qiita_sync_check:
+    name: Run qiita-sync sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install qiita-sync
+        run: |
+          curl -OL https://raw.githubusercontent.com/ryokat3/qiita-sync/v1.0.0/qiita_sync/qiita_sync.py
+      - name: Run qiita-sync
+        run: |
+          python qiita_sync.py sync .
+        env: 
+          QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
+      - name: Git
+        run: |
+          find . -name '*.md' -not -path './.*' | xargs git add
+          if ! git diff --staged --exit-code --quiet
+          then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            find . -name '*.md' -not -path './.*' | xargs git add
+            git commit -m "updated by qiita-sync"
+            git push
+          fi
+```
 
 
 
