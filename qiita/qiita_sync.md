@@ -1,8 +1,9 @@
 <!--
-title:  GitHub連携でQiita記事を素敵な執筆環境で！
-tags:   qiita,markdown,github
+title:   GitHub連携でQiita記事を素敵な執筆環境で！
+tags:    GitHub,Markdown,Qiita
+id:      d054b95f68810f70b136
+private: false
 -->
-
 # 「素敵な執筆環境」とは？
 
 心地よいソファーだったり、甘えん坊だけどキーボードの上だけは避けてくれる猫のことではなく、vi とか emacs とか vscode とか、お気に入りのエディタを使った執筆環境を実現するために開発した [Qiita Sync](https://github.com/ryokat3/qiita-sync) の紹介です。
