@@ -1,6 +1,6 @@
 <!--
 title:   GitHub連携でQiita記事を素敵な執筆環境で！
-tags:    GitHub,Markdown,Qiita
+tags:    GitHub,Qiita,Python,GitHubActions,個人開発
 id:      d054b95f68810f70b136
 private: false
 -->
@@ -12,7 +12,7 @@ private: false
 
 個人的には以下のような Qiita 公式の Web アプリによる執筆時の不満を解消するため、この執筆環境を開発しました。
 
-- Web アプリという性質上、マウスの多用を強制されたり、慣れたエディタのキーバインドが操作ミスになったり（Backspace 代わりの Ctrl-H で履歴画面を見せられる...）、個人的にイライラすることが多い。
+- Web アプリという性質上、マウスの使用を強要されたり、慣れたエディタのキーバインドが操作ミスになったり（Backspace 代わりの Ctrl-H で履歴画面を見せられる...）、個人的にイライラすることが多い。
 
 - 図を更新の際に、Qiita のサイトに upload されたファイルを直接編集することはできず、図のファイルをローカルにコピーし、保存管理しておく必要がある。
 
@@ -29,9 +29,7 @@ notepad でもいいですが、とにかくあとは Qiita Sync にお任せで
 
 ## 記事の同期も自動でチェック
 
-Qiitaの記事をブラウザでチャチャっと作ったり、更新したり、そんな時は GitHub との
-同期が取れなくなることもあります。でも大丈夫、同期がとれないことは、GitHub の画面で確認できるし、
-GitHub からメールのお知らせが届きます。
+Qiitaの記事をブラウザでチャチャっと作ったり、更新したり、そんな時は GitHub との同期が取れなくなることもあります。でも大丈夫、同期がとれないことは、GitHub の画面で確認できるし、GitHub からメールのお知らせが届きます。
 
 記事の差分が確認できたら、クリックひとつで再び同期させることもできます。
 
@@ -44,17 +42,13 @@ GitHub からメールのお知らせが届きます。
 
 ## インストールしなくていい、使い方も覚えなくていい
 
-メインの機能を提供する Qiita Sync は python の CLI コマンドですが、GitHub Actions 上で動作するので、
-コマンドをインストールしたり、使い方や引数を覚えたりする必要はありません。
-もちろん python のインストールも不要です。
+メインの機能を提供する Qiita Sync は python の CLI コマンドですが、GitHub Actions 上で動作するので、コマンドをインストールしたり、使い方や引数を覚えたりする必要はありません。もちろん python のインストールも不要です。
 
 # 準備
 
 ## Qiita Access Token の生成
 
-記事の投稿に [Qiita API v2](https://qiita.com/api/v2/docs) を使うので
-秘密鍵である Access Token が必要になります。Access Token は Qiita の
-ユーザ画面から、
+記事の投稿に [Qiita API v2](https://qiita.com/api/v2/docs) を使うので秘密鍵である Access Token が必要になります。Access Token は Qiita のユーザ画面から、
 
 1. [Qiita Account Applications](https://qiita.com/settings/applications) を開く
 2. "Generate new token" をクリック
@@ -67,8 +61,7 @@ GitHub からメールのお知らせが届きます。
 
 ## Qiita Access Token の登録
 
-Qiita 同期をする GitHub の repository を一つ用意する。できれば専用の repository を
-用意することをお勧めします。
+Qiita 同期をする GitHub の repository を一つ用意する。できれば専用の repository を用意することをお勧めします。
 
 1. GitHub repository の GUI から Settings >> Secrets で "Actions secrets" の画面を表示
 2. 右上の "New repository secret" のボタンをクリック
@@ -80,24 +73,20 @@ Qiita 同期をする GitHub の repository を一つ用意する。できれば
 
 ## GitHub Actions の設定
 
-以下の２つの YAML ファイルを作成する。
+以下の２つの YAML ファイルを作成します。
 
 - [.github/workflows/qiita_sync.yml](https://raw.githubusercontent.com/ryokat3/qiita-sync/main/github_actions/qiita_sync.yml)
 - [.github/workflows/qiita_sync_check.yml](https://raw.githubusercontent.com/ryokat3/qiita-sync/main/github_actions/qiita_sync_check.yml)
 
 どちらのファイルも基本的にこのまま変更なしに使用できます。
 
-ただし `qiita_sync_check.yml` の `cron: "29 17 * * *"` の部分は変更をお願いします。
-Qiita の記事の同期をチェックする GitHub Actions を cron で定期的に実行されるのですが、利用者全員が
-同じ時間を設定すると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるため設定の
-変更をお願いします。
+ただし `qiita_sync_check.yml` の `cron: "29 17 * * *"` の部分は変更をお願いします。利用者全員が同じ時間をになると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるためです。
 
 ::: warn
 cron の時間設定は変更する
 :::
 
-下記の例 `29 17 * * *` は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになります。
-もちろん一週間に一度に設定でも、毎時間起動しても構いません。
+下記の例 `29 17 * * *` は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになります。週一の起動でも構いません。
 
 ```yaml:.github/workflows/qiita_sync_check.yml
 name: Qiita Sync Check
@@ -134,9 +123,7 @@ jobs:
           QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
 ```
 
-`qiita_sync.yml` は Qiita と GitHub の内容を比較して、内容に差異がある場合は
-最終更新時間が新しい方を正とします。Qiita が新しい場合には download、
-GitHub が新しい場合には upload を行います。
+`qiita_sync.yml` は Qiita と GitHub の内容を比較して、内容に差異がある場合は最終更新時間が新しい方を正とします。Qiita が新しい場合には download、GitHub が新しい場合には upload を行います。
 
 ```yaml:.github/workflows/qiita_sync.yml
 name: Qiita Sync
@@ -179,10 +166,7 @@ jobs:
           fi
 ```
 
-この２つのファイルを GitHub に push すると同期が始まります。
-最初にインストールした時のファイル名は記事の ID に .md を付けたものになります。
-ファイルの拡張子が `.md` である限りは、ファイル名の変更やディレクトリの移動は
-自由なので、`git pull` した後は分かりやすいファイル名に変更してください。
+この２つのファイルを GitHub に push すると同期が始まります。最初にインストールした時のファイル名は記事の ID に .md を付けたものになります。ファイルの拡張子が `.md` である限りは、ファイル名の変更やディレクトリの移動は自由なので、`git pull` した後は分かりやすいファイル名に変更してください。ただし `README.md` というファイルは同期の対象から外されています。
 
 :::note info
 ファイル名の変更、ディレクトリの移動は自由
@@ -192,8 +176,7 @@ jobs:
 
 ## バッジの設定
 
-README に以下の画像リンクを追加すると、同期の成否を示すバッジが表示されます。
-成功のバッジが表示されていると執筆の意欲も沸くのでおすすめです。
+README に以下の画像リンクを追加すると、同期の成否を示すバッジが表示されます。成功のバッジが表示されていると執筆の意欲も沸くのでおすすめです。
 
 `<Your-ID>` と `<Your-Respository>` の部分はあなたのものに置き換えてください。
 
@@ -215,14 +198,7 @@ README に以下の画像リンクを追加すると、同期の成否を示す�
 
 記事を git で push すると自動的に同期が始まるので、通常手動で同期を行うことはありません。
 
-ただ、Qiita の Web アプリケーションで記事を更新すると上記の失敗した場合のバッジが表示されます。
-同時に GitHub に登録したメールアドレス宛にも通知が行きます。
-
-:::note warn
-ブラウザで記事を更新したら同期は外れる
-:::
-
-その他、複数の新しい記事を一度にダウンロードする場合などに失敗することがあります。
+ただ、Qiita の Web アプリケーションで記事を更新すると、次の cron 起動じに上記の失敗した場合のバッジが表示されます。同時に GitHub に登録したメールアドレス宛にも通知が行きます。その他、複数の新しい記事を一度にダウンロードする場合などに失敗することがあります。
 
 そのような場合には、以下の手順で GitHub Actions を実行し、記事を同期させるようにします。
 
@@ -234,20 +210,16 @@ README に以下の画像リンクを追加すると、同期の成否を示す�
 
 # 記事の執筆
 
-お気に入りのエディタで markdown を編集するのですが、
-記事の執筆時に幾つかの留意点があります。
+お気に入りのエディタで markdown を編集するのですが、記事の執筆時に幾つかの留意点があります。
 
 ## 記事のヘッダ
 
-Qiita からダウンロードした記事には以下のようなヘッダがファイルの先頭に自動的に
-付加されます。
+Qiita からダウンロードした記事には以下のようなヘッダがファイルの先頭に自動的に付加されます。
 
-`title` や `tags` は自由に変更できますが、`id` を変更したり、消去したりしては
-いけません。また `id` は他の記事と共用はできないので、ファイルをコピーする
-時には `id` を消去してください。
+`title` や `tags` は自由に変更できますが、`id` を変更したり、消去したりすることはできません。ですが `id` は他の記事と共用はできないので、ファイルをコピーする時には `id` を消去してください。
 
 :::note alert
-ヘッダの id の取扱は注意
+ヘッダの id の取扱は注意する
 :::
 
 ```markdown
@@ -258,8 +230,13 @@ id:    a5b5328c93bad615c5b2
 -->
 ```
 
-新しい記事を作成する場合には、`id` は不要です。記事を Qiita にアップロードした後に
-自動的に `id` が付加されます。
+## 新しい記事の作成
+
+新しい記事を作成する場合には、ヘッダに `id` は不要です。Qiita-Sync が、記事を Qiita にアップロードした後に `id` をファイルのヘッダに付加します。GitHub 上で Qiita-Sync がファイルの一部を書き換えることになるので、`git pull` などで local も最新に追従するようにしてください。
+
+:::note warn
+新しい記事を追加した後には同期後に git pull しておく
+:::
 
 ```markdown
 <!--
@@ -268,17 +245,10 @@ tags:  Qiita-Sync
 -->
 ```
 
-このように GitHub 側でファイルの一部を書き換えることがあるので、`git pull` などで
-local も最新に追従するようにしてください。
-
-:::note warn
-新しい記事を追加した後には同期後に git pull しておく
-:::
 
 ## 他の記事へのリンク
 
-同じユーザの他の Qiita の記事へのリンクは、以下のようにファイルの相対パスで
-指定することができます。
+同じユーザの他の Qiita の記事へのリンクは、以下のようにファイルの相対パスで指定することができます。
 
 ```markdown
 <!-- An example of link to another Qiita article when writing -->
@@ -312,8 +282,10 @@ Qiita にアップロードされる際に自動的にURLに変換されます�
 
 ダウンロード時には再び相対パスのリンクに変換されます。
 
+# コンタクト
 
+[GitHub qiita-sync](https://github.com/ryokat3/qiita-sync) までお願いいたします。もちろん日本語で構いません。個人開発なので即時対応するのは難しいですが、お使いいただいて不具合報告や改善要求などいただけるととてもうれしいです。
 
 **脚注**
 
-[^1]: [画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) の一部は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。
+[^1]: [図で使用した画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。
