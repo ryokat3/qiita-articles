@@ -82,7 +82,7 @@ Qiita 同期をする GitHub の repository を一つ用意する。できれば
 
 ただし `qiita_sync_check.yml` の `cron: "29 17 * * *"` の部分は変更をお願いします。利用者全員が同じ時間をになると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるためです。
 
-::: warn
+:::note warn
 cron の時間設定は変更する
 :::
 
@@ -124,6 +124,8 @@ jobs:
 ```
 
 `qiita_sync.yml` は Qiita と GitHub の内容を比較して、内容に差異がある場合は最終更新時間が新しい方を正とします。Qiita が新しい場合には download、GitHub が新しい場合には upload を行います。
+
+GitHub のデフォルトのブランチ名が `main` なので、この GitHub Actions は `main` に push された時起動します。もしブランチ名に `master` など他の名前を使われている方は `on.push.branches` の `main` を `master` に変更してください。
 
 ```yaml:.github/workflows/qiita_sync.yml
 name: Qiita Sync
