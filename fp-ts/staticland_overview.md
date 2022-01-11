@@ -1,9 +1,9 @@
 <!--
-title: fp-ts 代数型の型クラス
-tags:  圏論,TypeScript,fp-ts
-id:    5f67dda315ef485a4fae
+title:   fp-ts 代数型の型クラス
+tags:    TypeScript,fp-ts,圏論
+id:      5f67dda315ef485a4fae
+private: false
 -->
-
 fp-tsは[static-land](https://github.com/fantasyland/static-land)で定義されたTypeScriptの代数型を参照して実装されている。
 馴染みのない用語だらけなので、整理がてらに[仕様](https://github.com/fantasyland/static-land/blob/master/docs/spec.md)のまとめ。
 
@@ -512,11 +512,10 @@ F.reduce = (f, acc, u) => {
 
 **mapの導出**
 
-```js
+`js
 F.map = (f, u) => {
   const of = (x) => x
   const map = (f, a) => f(a)
   const ap = (f, a) => f(a)
   return F.traverse({of, map, ap}, f, u)
 }
-```

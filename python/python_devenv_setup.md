@@ -1,9 +1,9 @@
 <!--
-title: pyenv + venv + poetry による開発環境構築 (Ubuntu 21.10)
-tags:  python=3.6|3.7|3.8|3.9|3.10,ubuntu=21.10
-id:    a5b5328c93bad615c5b2
+title:   pyenv + venv + poetry による開発環境構築 (Ubuntu 21.10)
+tags:    Python=3.10|3.6|3.7|3.8|3.9,Ubuntu=21.10
+id:      a5b5328c93bad615c5b2
+private: false
 -->
-
 pythonの仮想環境で開発を行うために必要なツールのインストール手順の紹介です。
 
 
@@ -147,6 +147,5 @@ curl -sSL https://install.python-poetry.org | python3 -
 ~/.local/bin がPATHに含まれていない場合に追加
 :::
 
-```shell:【参考】環境変数追加設定（.profile、.bash_profileなど）
+`shell:【参考】環境変数追加設定（.profile、.bash_profileなど）
 export PATH="$HOME/.local/bin:$PATH"
-```

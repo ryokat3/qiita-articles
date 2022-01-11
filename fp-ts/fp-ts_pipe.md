@@ -1,9 +1,9 @@
 <!--
-title: fp-ts 関数を繋げる
-tags:  TypeScript,関数型プログラミング
-id:    17ca73295aad9997f22e
+title:   fp-ts 関数を繋げる
+tags:    TypeScript,関数型プログラミング
+id:      17ca73295aad9997f22e
+private: false
 -->
-
 fp-tsでは`pipe`という関数で関数を繋げていきます。Haskellの`do`やScalaの`for`に相当するものですが、
 表現力はなかり見劣りします。
 
@@ -57,6 +57,5 @@ chain: <A, B>(f: (a: A) => Option<B>) => (ma: Option<A>) => Option<B>
 `ap`を使うことで閉じ込められた関数`<B>(mab: Option<(a: A) => B>)`を
 引数`<A>(ma: Option<A>)`で呼び出すことができます。これにも色々亜種、各Monadクラス特有のものがあります。
 
-```typescript
+`typescript
 ap: <A>(ma: Option<A>) => <B>(mab: Option<(a: A) => B>) => Option<B>) => Option<B>
-```
