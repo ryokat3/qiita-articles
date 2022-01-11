@@ -8,4 +8,4 @@ private: false
 
 [doc](qiita/qiita_sync.md)
 
-updated at Local
+updated from Local Disk
