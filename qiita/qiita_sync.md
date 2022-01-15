@@ -270,14 +270,14 @@ Qiita にアップロードされる際に自動的にURLに変換されます�
 
 画像ファイルへのリンクは、以下のように相対パスで指定することができます。
 
-```markdown
+```markdown:編集中のリンク
 <!-- An example of link to image file 'earth.png' when writing-->
 ![My Image](../image/earth.png)
 ```
 
 Qiita にアップロードされる際に自動的にURLに変換されます。
 
-```markdown
+```markdown:アップロード時のリンク
 <!-- An example of link to image file 'earth.png' when published to Qiita site -->
 ![My Image](https://raw.githubusercontent.com/ryokat3/qiita-articles/main/image/earth.png)
 ```
