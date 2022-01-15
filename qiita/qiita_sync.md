@@ -182,7 +182,7 @@ README に以下の画像リンクを追加すると、同期の成否を示す�
 
 `<Your-ID>` と `<Your-Respository>` の部分はあなたのものに置き換えてください。
 
-```markdown:<Your-ID>と<Your-Repository>は置換する
+```markdown:バッジの画像リンク
 ![Qiita Sync](https://github.com/<Your-ID>/<Your-Repository>/actions/workflows/qiita_sync_check.yml/badge.svg)
 ```
 
