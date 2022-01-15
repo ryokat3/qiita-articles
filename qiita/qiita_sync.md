@@ -1,6 +1,6 @@
 <!--
 title:   GitHub連携でQiita記事を素敵な執筆環境で！
-tags:    GitHub,Qiita,Python,GitHubActions,個人開発
+tags:    GitHub,GitHubActions,Python,Qiita,個人開発
 id:      d054b95f68810f70b136
 private: false
 -->
@@ -288,6 +288,6 @@ Qiita にアップロードされる際に自動的にURLに変換されます�
 
 [GitHub qiita-sync](https://github.com/ryokat3/qiita-sync) までお願いいたします。もちろん日本語で構いません。個人開発なので即時対応するのは難しいですが、お使いいただいて不具合報告や改善要求などいただけるととてもうれしいです。
 
-**脚注**
+---------------------------
 
 [^1]: [図で使用した画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。

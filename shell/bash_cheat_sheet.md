@@ -1,7 +1,8 @@
 <!--
-title: Bourne Shell から Bash への移行ガイド
-tags:  Bash
-id:    56c5218667d21db7e999
+title:   Bourne Shell から Bash への移行ガイド
+tags:    Bash
+id:      56c5218667d21db7e999
+private: false
 -->
 Bash (/bin/bash) にはあるけど、Bourne Shell (/bin/sh) にない便利な機能。
 
@@ -126,5 +127,5 @@ echo_array var[@]         # 配列を引数として関数を呼び出す
 環境変数 `PS1` の文字列を評価してくれる。`$( )`によるコマンド呼出しも受け付けてくれる。
 `$` の前に `\` でエスケープしておかないと最初の一回しか評価してくれないので注意。
 
-- **PS1="\[\e[30m\e[47m\]\W(\$(date +%H:%M))\$\[\e[0m\] "** : 現在時刻の表示
-- **PS1="\[\e[30m\e[47m\]\W[\$(git rev-parse --abbrev-ref HEAD 2> /dev/null || echo -)]$\[\e[0m\] "** : GIT ブランチの表示
+- **現在時刻の表示** : `PS1="\[\e[30m\e[47m\]\W(\$(date +%H:%M))\$\[\e[0m\] "`
+- **GIT ブランチの表示** : `PS1="\[\e[30m\e[47m\]\W[\$(git rev-parse --abbrev-ref HEAD 2> /dev/null || echo -)]$\[\e[0m\] "`
