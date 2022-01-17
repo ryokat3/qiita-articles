@@ -9,32 +9,32 @@ fp-tsは[static-land](https://github.com/fantasyland/static-land)で定義され
 
 ![継承関係](https://github.com/fantasyland/fantasy-land/blob/master/figures/dependencies.png?raw=true)
 
-| 代数型                            | 要約                                 | 継承               |
-|-----------------------------------|--------------------------------------|--------------------|
-| [Setoid](#setoid)                 | 等値関係                             |                    |
-| [Ord](#ord)                       | 大小関係                             | Setoid             |
-| [Semigroup](#semigroup)           | 半群、二項演算                       |                    |
-| [Monoid](#monoid)                 | モノイド、二項演算 + 単位元          | Semigroup          |
-| [Group](#group)                   | 群、二項演算 + 単位元 + 逆元         | Monoid             |
-| [Semiroupid](#semiroupid)         | 半圏、恒等射のない圏 　　            |                    |
-| [Category](#category)             | 圏            　　　　 　            | Semigroupid        |
-| [Functor](#functor)               | 関手                                 |                    |
-| [Bifunctor](#bifunctor)           | 双関手                               | Functor            |
-| [Contravariant](#contravariant)   | 反変関手                             |                    |
-| [Profunctor](#profunctor)         | 対角関手                             | Functor            |
-| [Apply](#apply)                   | 評価射、積と冪からなる随伴の余単位   | Functor          　|
-| [Applicative](#applicative)       | 強Laxモノイダル関手                  | Apply              | 
-| [Chain](#chain)                   | モナドの結合法則                     | Apply              |
-| [Monad](#monad)                   | モナド                               | Chain, Applicative |
-| [Extend](#extend)                 | コモナドの結合法則                   | Functor            |
-| [Comonad](#comonad)               | コモナド                             | Extend             |
-| [Alt](#alt)                       | 関手の結合法則と分配法則             | Functor            |
-| [Plus](#plus)                     | 関手の結合法則と分配法則と単位元     | Alt                |
-| [Alternative](#alternative)       |                                      | Plus, Applicative  |
-| [Filterable](#filterable)         | フィルタリング                       |                    | 
-| [ChainRec](#chainrec)             | 末尾再帰のChain                      | Chain              |
-| [Foldable](#foldable)             | catamorphism                         |                    |
-| [Traversable](#traversable)       | 計算効果の簡約化                     | Functor, Foldable  |
+| 代数型                            | 要約                                                      | 継承               |
+|-----------------------------------|-----------------------------------------------------------|--------------------|
+| [Setoid](#setoid)                 | 等値関係                                                  |                    |
+| [Ord](#ord)                       | 大小関係                                                  | Setoid             |
+| [Semigroup](#semigroup)           | 半群、二項演算                                            |                    |
+| [Monoid](#monoid)                 | モノイド、二項演算 + 単位元                               | Semigroup          |
+| [Group](#group)                   | 群、二項演算 + 単位元 + 逆元                              | Monoid             |
+| [Semiroupid](#semiroupid)         | 半圏、恒等射のない圏                                      |                    |
+| [Category](#category)             | 圏                                                        | Semigroupid        |
+| [Functor](#functor)               | 関手                                                      |                    |
+| [Bifunctor](#bifunctor)           | 双関手                                                    | Functor            |
+| [Contravariant](#contravariant)   | 反変関手                                                  |                    |
+| [Profunctor](#profunctor)         | 対角関手                                                  | Functor            |
+| [Apply](#apply)                   | 評価射、積と冪からなる随伴の余単位                        | Functor            |
+| [Applicative](#applicative)       | 強Laxモノイダル関手                                       | Apply              | 
+| [Chain](#chain)                   | モナドの結合法則                                          | Apply              |
+| [Monad](#monad)                   | モナド                                                    | Chain, Applicative |
+| [Extend](#extend)                 | コモナドの結合法則                                        | Functor            |
+| [Comonad](#comonad)               | コモナド                                                  | Extend             |
+| [Alt](#alt)                       | 関手の（圏論的な意味でない）結合法則と分配法則            | Functor            |
+| [Plus](#plus)                     | 関手の（圏論的な意味でない）結合法則と分配法則と単位元    | Alt                |
+| [Alternative](#alternative)       |                                                           | Plus, Applicative  |
+| [Filterable](#filterable)         | フィルタリング                                            |                    | 
+| [ChainRec](#chainrec)             | 末尾再帰のChain                                           | Chain              |
+| [Foldable](#foldable)             | catamorphism                                              |                    |
+| [Traversable](#traversable)       | 計算効果の簡約化                                          | Functor, Foldable  |
 
 「型クラス」とは言え、HaskellとかScalaとは違い、言語的サポートがないTypeScriptでは、単なるインタフェースとして定義されてる。
 便利でもないし、扱いやすくもない。fp-tsではTypeScriptのわりと特殊な（だけども素晴らしい設計の）型システムを
