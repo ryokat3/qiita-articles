@@ -4,34 +4,32 @@ tags:    圏論,関数型プログラミング
 id:      c2f9caff20031095751f
 private: false
 -->
-## YouTube
+# YouTube
 
 都度都度でプログラミングとからめて講義を進めてくれるので、はたと膝を打ちながら理解できる
 
-### プログラマのための圏論 1
+## プログラマのための圏論 1
 
 https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
 
-### プログラマのための圏論 2
+## プログラマのための圏論 2
 
 https://www.youtube.com/watch?v=3XTQSx1A3x8&list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm
 
-### プログラマのための圏論 3
+## プログラマのための圏論 3
 
 https://www.youtube.com/watch?v=F5uEpKwHqdk&list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL
 
-- 概要 
- 
-  - Part 1
+### 概要 Part 1
 
 https://youtu.be/F5uEpKwHqdk
 
-  - Part 2
+### 概要 Part 2
 
 https://youtu.be/CfoaY2Ybf8M
 
 
-## 教科書
+# 教科書
 
 上記YouTube動画を基にした教材
 
@@ -62,7 +60,7 @@ https://youtu.be/CfoaY2Ybf8M
 | profunctor               | -                                                              |
 | semigroup                | 半群                                                           |
 
-## 日本語書籍
+# 日本語書籍
 
 日本語で知識を貯めておく。
 
