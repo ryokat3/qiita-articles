@@ -1,7 +1,8 @@
 <!--
-title: ギリシャ文字
-tags:  Mathematics
-id:    8fe145567d1951284c57
+title:   ギリシャ文字
+tags:    Mathematics
+id:      8fe145567d1951284c57
+private: false
 -->
 ### 読み方
 
@@ -36,4 +37,4 @@ id:    8fe145567d1951284c57
 
 ### 書き方
 
-- [ギリシャ文字 手書き動画](https://www.youtube.com/watch?v=JgRYrzc8cFg)
+https://www.youtube.com/watch?v=JgRYrzc8cFg
