@@ -18,8 +18,6 @@ https://www.youtube.com/watch?v=3XTQSx1A3x8&list=PLbgaMIhjbmElia1eCEZNvsVscFef9m
 
 ## プログラマのための圏論 3
 
-https://www.youtube.com/watch?v=F5uEpKwHqdk&list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL
-
 ### 概要 Part 1
 
 https://youtu.be/F5uEpKwHqdk
@@ -28,7 +26,56 @@ https://youtu.be/F5uEpKwHqdk
 
 https://youtu.be/CfoaY2Ybf8M
 
+### String Diagram Part 1
 
+https://youtu.be/eOdBTqY3-Og
+
+### String Diagram Part 2
+
+https://youtu.be/lqq9IFSPp7Q
+
+### 随伴とモナド
+
+https://youtu.be/9p6_U5yV0ro
+
+### モナド代数 Part 1
+
+https://youtu.be/uXfBmsQJsN4
+
+### モナド代数 Part 2
+
+https://youtu.be/-wlT81LQ4Oc
+
+### モナド代数 Part 3
+
+https://youtu.be/9f8PumwS2gU
+
+### Eilenberg Moore と Lawvere
+
+[Eilenberg-Moore Category](http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/Eilenberg-Moore+category)
+[Lawvere Theory](https://en.wikipedia.org/wiki/Lawvere_theory)
+
+https://youtu.be/5PaxKu2TXno
+
+### Lawvere 定理
+
+https://youtu.be/zCTAn_nIrS0
+
+### 対角関手
+
+https://youtu.be/XJgfrF3O6iE
+
+### エンド
+
+https://youtu.be/TAPxt26YyEI
+
+### エンドとしての自然変換
+
+https://youtu.be/DseY4qIGZV4
+
+### コエンド
+
+https://youtu.be/jQUebw8uac0
 # 教科書
 
 上記YouTube動画を基にした教材
