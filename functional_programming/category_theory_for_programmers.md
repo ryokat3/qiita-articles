@@ -8,17 +8,28 @@ private: false
 
 都度都度でプログラミングとからめて講義を進めてくれるので、はたと膝を打ちながら理解できる
 
-- 圏論1
+### プログラマのための圏論 1
 
 https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
 
-- 圏論2
+### プログラマのための圏論 2
 
 https://www.youtube.com/watch?v=3XTQSx1A3x8&list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm
 
-- 圏論3
+### プログラマのための圏論 3
 
 https://www.youtube.com/watch?v=F5uEpKwHqdk&list=PLbgaMIhjbmEn64WVX4B08B4h2rOtueWIL
+
+- 概要 
+ 
+  - Part 1
+
+https://youtu.be/F5uEpKwHqdk
+
+  - Part 2
+
+https://youtu.be/CfoaY2Ybf8M
+
 
 ## 教科書
 
