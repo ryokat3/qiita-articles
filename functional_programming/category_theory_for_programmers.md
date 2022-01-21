@@ -10,7 +10,33 @@ private: false
 
 ## プログラマのための圏論 1
 
-https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
+### 動機と哲学
+
+https://youtu.be/I8LbkfSSR58
+
+### 圏とは？
+
+https://youtu.be/p54Hd7AmVFU
+
+### 関数、全射
+
+https://youtu.be/O2lZkr-aAqk
+
+### 単射、単純な型
+
+https://youtu.be/NcT7CGPICzo
+
+### 圏、順序、モノイドの例
+
+https://youtu.be/aZjhqkD6k6w
+
+### クライスリ圏
+
+https://youtu.be/i9CU4CuHADQ
+
+### 終対象と始対象
+
+https://youtu.be/zer1aFgj4aU
 
 ## プログラマのための圏論 2
 
@@ -119,3 +145,7 @@ https://youtu.be/jQUebw8uac0
 - [ベーシック圏論](https://www.maruzen-publishing.co.jp/smp/item/b295027.html)
   - 多分腰を据えて数学を勉強する人向け
   - 今のところ用語の定義等を確認するのに使用するぐらい...
+
+# その他
+
+- [ギリシャ文字に慣れる](2020-05-26_Mathematics_8fe145567d1951284c57.md)
