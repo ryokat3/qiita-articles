@@ -38,6 +38,14 @@ https://youtu.be/i9CU4CuHADQ
 
 https://youtu.be/zer1aFgj4aU
 
+### 積
+
+https://youtu.be/Bsdl_NKbNnU
+
+### 余積、和の型
+
+https://youtu.be/LkIRsNj9T-8
+
 ## プログラマのための圏論 2
 
 https://www.youtube.com/watch?v=3XTQSx1A3x8&list=PLbgaMIhjbmElia1eCEZNvsVscFef9m0dm
