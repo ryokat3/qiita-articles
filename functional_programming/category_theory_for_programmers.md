@@ -148,4 +148,4 @@ https://youtu.be/jQUebw8uac0
 
 # その他
 
-- [ギリシャ文字に慣れる](2020-05-26_Mathematics_8fe145567d1951284c57.md)
+- [ギリシャ文字に慣れる](greek_characters.md)
