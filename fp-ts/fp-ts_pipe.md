@@ -4,7 +4,7 @@ tags:    TypeScript,関数型プログラミング
 id:      17ca73295aad9997f22e
 private: false
 -->
-fp-tsでは`pipe`という関数で関数を繋げていきます。Haskellの`do`やScalaの`for`に相当するものですが、
+fp-tsでは `pipe` という関数で関数を繋げていきます。Haskellの `do` やScalaの `for` に相当するものですが、
 表現力はなかり見劣りします。
 
 ## Monadクラスを使用した場合の関数の２形態
