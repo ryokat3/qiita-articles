@@ -143,9 +143,10 @@ poetry は pip でインストールしない
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-::: warn
+:::note warn
 ~/.local/bin がPATHに含まれていない場合に追加
 :::
 
-`shell:【参考】環境変数追加設定（.profile、.bash_profileなど）
+```shell:【参考】環境変数追加設定（.profile、.bash_profileなど）
 export PATH="$HOME/.local/bin:$PATH"
+```

@@ -1,3 +1,4 @@
 {
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "GitHub Light",
+    "markdown-preview-github-styles.colorTheme": "dark"
 }
