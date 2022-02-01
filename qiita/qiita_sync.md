@@ -8,6 +8,8 @@ private: false
 
 心地よいソファーだったり、甘えん坊だけどキーボードの上だけは避けてくれる猫のことではなく、vi とか emacs とか vscode とか、お気に入りのエディタを使った執筆環境を実現するために開発した [Qiita Sync](https://github.com/ryokat3/qiita-sync) の紹介です。
 
+https://github.com/ryokat3/qiita-sync
+
 ## Qiita の記事を執筆する時の不満
 
 個人的には以下のような Qiita 公式の Web アプリによる執筆時の不満を解消するため、この執筆環境を開発しました。
