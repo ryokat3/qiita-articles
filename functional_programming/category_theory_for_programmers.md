@@ -110,6 +110,7 @@ https://youtu.be/DseY4qIGZV4
 ### コエンド
 
 https://youtu.be/jQUebw8uac0
+
 # 教科書
 
 上記YouTube動画を基にした教材
@@ -136,7 +137,7 @@ https://youtu.be/jQUebw8uac0
 | homomorphism             | 準同型                                                         |
 | isomorphic               | 同型                                                           |
 | lemma                    | 補題                                                           |
-| monomorphism             | 単射、モノ射　　　　　　　　　　　　　　　　　　　　　　　　   |
+| monomorphism             | 単射、モノ射                                                   |
 | morphism                 | 射                                                             |
 | profunctor               | -                                                              |
 | semigroup                | 半群                                                           |
