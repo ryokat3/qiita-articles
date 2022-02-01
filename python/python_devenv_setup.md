@@ -1,6 +1,6 @@
 <!--
 title:   pyenv + venv + poetry による開発環境構築 (Ubuntu 21.10)
-tags:    Python=3.10|3.6|3.7|3.8|3.9,Ubuntu=21.10
+tags:    Python,pyenv
 id:      a5b5328c93bad615c5b2
 private: false
 -->
