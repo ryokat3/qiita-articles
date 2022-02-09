@@ -48,6 +48,12 @@ Qiitaの記事をブラウザでチャチャっと作ったり、更新したり
 
 # 準備
 
+## GitHub リポジトリの作成
+
+[qiita-sync-template](https://github.com/ryokat3/qiita-sync-template) にアクセスして、"Use this template" をクリックします。リポジトリ名などは任意にお決めください。
+
+![Qiita-Synt-Template](../img/qiita-sync-template.png)
+
 ## Qiita Access Token の生成
 
 記事の投稿に [Qiita API v2](https://qiita.com/api/v2/docs) を使うので秘密鍵である Access Token が必要になります。Access Token は Qiita のユーザ画面から、
@@ -63,9 +69,7 @@ Qiitaの記事をブラウザでチャチャっと作ったり、更新したり
 
 ## Qiita Access Token の登録
 
-Qiita 同期をする GitHub の repository を一つ用意する。できれば専用の repository を用意することをお勧めします。
-
-1. GitHub repository の GUI から Settings >> Secrets で "Actions secrets" の画面を表示
+1. GitHub リポジトリの GUI から Settings >> Secrets で "Actions secrets" の画面を表示
 2. 右上の "New repository secret" のボタンをクリック
 3. Name には `QIITA_ACCESS_TOKEN` と入力
 4. Value には Qiita で生成した Access Token を入力（下図）
@@ -73,114 +77,36 @@ Qiita 同期をする GitHub の repository を一つ用意する。できれば
 
 ![GitHub Access Token 登録画面](../img/github_save_access_token.png)
 
-## GitHub Actions の設定
+## Qiita 記事の同期
 
-以下の２つの YAML ファイルを作成します。
+手動でQiitaとGitHubを同期させます。
 
-- [.github/workflows/qiita_sync.yml](https://raw.githubusercontent.com/ryokat3/qiita-sync/main/github_actions/qiita_sync.yml)
-- [.github/workflows/qiita_sync_check.yml](https://raw.githubusercontent.com/ryokat3/qiita-sync/main/github_actions/qiita_sync_check.yml)
+1. GitHub repository の GUI から "Actions" >> "Qiita Sync" を開く
+2. "Run workflow" をクリックする（下図）
 
-どちらのファイルも基本的にこのまま変更なしに使用できます。
+   ![Qiita Sync manual execution](../img/qiita_sync_manual_execution.png)
 
-ただし `qiita_sync_check.yml` の `cron: "29 17 * * *"` の部分は変更をお願いします。利用者全員が同じ時間をになると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるためです。
+3. 数分後、Qiitaからダウンロードされた記事が GitHub リポジトリに追加されます。ファイル名は __最初に記事を作成した日付 + タグ + 記事の ID + .md__ になります。
 
-:::note warn
-cron の時間設定は変更する
-:::
+   ![Qiita-Sync initial download](../img/qiita_sync_initial_download.png)
 
-下記の例 `29 17 * * *` は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになります。週一の起動でも構いません。
+## Qiita 記事のダウンロード
 
-```yaml:.github/workflows/qiita_sync_check.yml
-name: Qiita Sync Check
+`git clone git@github.com:<Your-ID>/<Your-Repository>.git` で Qiita 記事をローカルのデバイスにダウンロードします。次の変更を加えます。
 
-on:
-  schedule:
-    - cron: "29 17 * * *"
-  workflow_run:
-    workflows: ["Qiita Sync"]
-    types:
-      - completed
-  workflow_dispatch:
-
-jobs:
-  qiita_sync_check:
-    name: qiita-sync check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-      - name: Install qiita-sync
-        run: |
-          python -m pip install qiita-sync
-      - name: Run qiita-sync check
-        run: |
-          qiita_sync check . > ./qiita_sync_output.txt
-          cat ./qiita_sync_output.txt
-          [ ! -s "qiita_sync_output.txt" ] || exit 1
-        env: 
-          QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
-```
-
-`qiita_sync.yml` は Qiita と GitHub の内容を比較して、内容に差異がある場合は最終更新時間が新しい方を正とします。Qiita が新しい場合には download、GitHub が新しい場合には upload を行います。
-
-GitHub のデフォルトのブランチ名が `main` なので、この GitHub Actions は `main` に push された時起動します。もしブランチ名に `master` など他の名前を使われている方は `on.push.branches` の `main` を `master` に変更してください。
-
-```yaml:.github/workflows/qiita_sync.yml
-name: Qiita Sync
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-jobs:
-  qiita_sync_check:
-    name: Run qiita-sync sync
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-      - name: Install qiita-sync
-        run: |
-          python -m pip install qiita-sync
-      - name: Run qiita-sync
-        run: |
-          qiita_sync sync .
-        env: 
-          QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
-      - name: Git
-        run: |
-          find . -name '*.md' -not -path './.*' | xargs git add
-          if ! git diff --staged --exit-code --quiet
-          then
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            find . -name '*.md' -not -path './.*' | xargs git add
-            git commit -m "updated by qiita-sync"
-            git push
-          fi
-```
-
-この２つのファイルを GitHub に push すると同期が始まります。最初にインストールした時のファイル名は __最初に記事を作成した日付 + タグ + 記事の ID + .md__ になります。ファイルの拡張子が `.md` である限りは、ファイル名の変更やディレクトリの移動は自由なので、`git pull` した後は分かりやすいファイル名に変更してください。ただし `README.md` というファイルは同期の対象から外されています。
+### ファイル名の変更
 
 :::note info
 ファイル名の変更や移動は自由
 :::
 
-![Qiita-Sync initial download](../img/qiita_sync_initial_download.png)
+分かりやすいファイル名に変更しましょう。拡張子が `.md` であればなんでも構いません。ディレクトリを作成して、カテゴリー分けするのも良いでしょう。ただし `README.md` というファイルはQiita との同期の対象から外されています。
 
-## バッジの設定
+### README.md の変更
 
-README に以下の画像リンクを追加すると、同期の成否を示すバッジが表示されます。成功のバッジが表示されていると執筆の意欲も沸くのでおすすめです。
+ここまでくれば README に書かれている内容はもはや必要ありません。お好きなように書き換えてください。
+
+強いお勧めとして、README に以下の画像リンクを追加すると、同期の成否を示すバッジが表示されるようになります。成功のバッジが表示されていると執筆の意欲も沸くのでおすすめです。
 
 `<Your-ID>` と `<Your-Respository>` の部分はあなたのものに置き換えてください。
 
@@ -198,9 +124,37 @@ README に以下の画像リンクを追加すると、同期の成否を示す�
 
   ![Failing Badge](../img/qiita_sync_badge_failing.png)
 
+### cron 時間の変更
+
+Template には `.github/workflows/qiita_sync_check.yml` という YAML ファイルが含まれています。このファイルの `cron: "29 17 * * *"` の部分は変更をお願いします。利用者全員が同じ時間をになると、GitHub にも Qiita にも一斉に負担がかかるので、それを避けるためです。
+
+:::note warn
+cron の時間設定は変更する
+:::
+
+下記の例 `29 17 * * *` は 17:29 UTC なので日本時間だと毎日 02:29 JST に起動することになります。週一の起動でも構いません。
+
+```yaml:.github/workflows/qiita_sync_check.yml
+name: Qiita Sync Check
+
+on:
+  schedule:
+    - cron: "29 17 * * *"
+  workflow_run:
+    workflows: ["Qiita Sync"]
+
+# 以下省略
+```
+
+### 変更後のアップロード
+
+変更が完了したら、再び git push で記事や設定をアップロードします。アップロード完了と同時に再び Qiita と同期が始まります。
+
+これで準備は終了です。
+
 # 同期
 
-記事を git で push すると自動的に同期が始まるので、通常手動で同期を行うことはありません。
+準備完了以降は、記事を書いて、git で push するだけです。あとは自動的に同期が始まるので、通常手動で同期を行うことはありません。
 
 ただ、Qiita の Web アプリケーションで記事を更新すると、次の cron 起動じに上記の失敗した場合のバッジが表示されます。同時に GitHub に登録したメールアドレス宛にも通知が行きます。その他、複数の新しい記事を一度にダウンロードする場合などに失敗することがあります。
 
@@ -249,7 +203,6 @@ tags:  Qiita-Sync
 -->
 ```
 
-
 ## 他の記事へのリンク
 
 同じユーザの他の Qiita の記事へのリンクは、以下のようにファイルの相対パスで指定することができます。
@@ -285,6 +238,10 @@ Qiita にアップロードされる際に自動的にURLに変換されます�
 ```
 
 ダウンロード時には再び相対パスのリンクに変換されます。
+
+## Qiita Markdown Preview
+
+もし記事をVSCode で書く場合には [Qiita Markdown Preview](./qiita_markdown_preview.md) のインストールをお勧めします。Qiita の Markdown 拡張記法が Preview で表示されます。詳しくは以下のリンクをご覧ください。
 
 
 [^1]: [図で使用した画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。

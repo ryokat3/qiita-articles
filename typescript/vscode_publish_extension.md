@@ -158,7 +158,6 @@ File >> Preferences >> extensions で左 pane の右上の "..." をクリック
 
 `vsce` を使ったパッケージ公開手順ではなく、GUI で公開する方法を紹介します。Personal Access Token を発行する必要はありません。
 
-## Microsoft Marketplace アカウント取得
 
 1. [Microsoft Marketplace](https://marketplace.visualstudio.com/) を open します
 
