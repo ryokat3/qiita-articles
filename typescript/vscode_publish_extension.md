@@ -1,7 +1,10 @@
 <!--
-title:  はじめてのVSCode拡張開発 ～公式手順は茨の道なのか？～
-tags:   vscode,初心者,個人開発,nodejs,Typescript
+title:   はじめてのVSCode拡張開発 ～公式手順は茨の道なのか？～
+tags:    Node.js,TypeScript,VSCode,個人開発,初心者
+id:      35ed99ee2af2512b59bb
+private: false
 -->
+
 
 [はじめてVScode拡張 plugin](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview) を作成しました。公式の [公式のMarketplaceの公開手順](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) を見る限りでは、[PyPI](https://pypi.org) や [npm](https://www.npmjs.com) でパッケージを公開するぐらいに簡単そうです。
 

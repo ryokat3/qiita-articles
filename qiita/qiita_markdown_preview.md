@@ -1,7 +1,10 @@
 <!--
-title:  【Qiita拡張記法プラグイン】Qiita記事をVSCodeで書くなら今すぐインストール！
-tags:   Qiita,VSCode,個人開発,Markdown,TypeScript
+title:   【Qiita拡張記法プラグイン】Qiita記事をVSCodeで書くなら今すぐインストール！
+tags:    Markdown,Qiita,TypeScript,VSCode,個人開発
+id:      fe61d9234be2e147cb7f
+private: false
 -->
+
 
 [![version](https://vsmarketplacebadge.apphb.com/version/ryokat3.vscode-qiita-markdown-preview.svg)](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview)
 
