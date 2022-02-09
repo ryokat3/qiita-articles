@@ -155,7 +155,7 @@ docker run --user $(id -un) -it -v $(pwd):/workspace vsce package
 
 File >> Preferences >> extensions で左 pane の右上の "..." をクリックしたプルダウンメニューの一番下の項目を選択します。
 
-![Install VSIX](img/../../img/vscode_vsix_install.png)
+![Install VSIX](../img/vscode_vsix_install.png)
 
 # MarketPlace でのパッケージの公開
 
@@ -164,11 +164,11 @@ File >> Preferences >> extensions で左 pane の右上の "..." をクリック
 
 1. [Microsoft Marketplace](https://marketplace.visualstudio.com/) を open します
 
-   ![Microsoft ](img/../../img/microsoft_marketplace.png)
+   ![Microsoft Marketplace](../img/microsoft_marketplace.png)
 
 2. GUI 右上の "Publish Extension" をクリックし、拡張機能の管理画面を open します。アカウントをお持ちでない場合は適宜作成してください。
 
-   ![Microsoft ](img/../../img/microsoft_marketplace_manage.png)
+   ![Microsoft Marketplace Manage](../img/microsoft_marketplace_manage.png)
 
 3. ”Publisher" を追加します（上図ではすでに追加されています）
 
