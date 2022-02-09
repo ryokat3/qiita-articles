@@ -241,7 +241,7 @@ Qiita にアップロードされる際に自動的にURLに変換されます�
 
 ## Qiita Markdown Preview
 
-もし記事をVSCode で書く場合には [Qiita Markdown Preview](./qiita_markdown_preview.md) のインストールをお勧めします。Qiita の Markdown 拡張記法が Preview で表示されます。詳しくは以下のリンクをご覧ください。
+もし記事をVSCode で書く場合には [Qiita Markdown Preview](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview) のインストールをお勧めします。Qiita の Markdown 拡張記法が Preview で表示されます。詳しくは以下のリンクをご覧ください。
 
 https://qiita.com/ryokat3/items/fe61d9234be2e147cb7f
 
