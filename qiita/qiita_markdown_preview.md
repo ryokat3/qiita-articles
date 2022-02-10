@@ -12,8 +12,7 @@ private: false
 
 Qiitaで拡張されたMarkdown記法をVSCodeで表示するVSCode extensionを開発しました。VSCodeのParserやRendererを拡張していますので、CSSによるスタイルの適用だけでは不可能な表現を可能にしています。
 
-[Visual Studio Marketplace にて公開](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview)
-されています。是非インストールしてお試しください。
+[Visual Studio Marketplace にて公開](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview)されています。是非インストールしてお試しください。
 
 # インストール
 
