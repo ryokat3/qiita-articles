@@ -112,4 +112,6 @@ Qiita拡張記法ではなく、[Qiita-Sync](https://github.com/ryokat3)によ�
 
 今回初めて VSCode の拡張機能の実装を行いました。作成ツールが期待したように動作せず苦労の連続だったので、[その顛末を記したQiita記事](../typescript/vscode_publish_extension.md)も投稿いたしました。拡張機能作成に興味がある方は是非ご覧ください。
 
+--------
+
 [^1]: [図で使用した画像素材](https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fpngtree.com%2Ffreepng%2Fman-working-on-computer-at-home-isometric-vector_4000330.html?share=3&media=https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-man-working-on-computer-at-home-isometric-vector-png-image_321818.jpg&description=Man+working+on+computer+at+home+isometric+vector) は [Man png from pngtree.com/](https://pngtree.com/so/Man) のものを使用しています。

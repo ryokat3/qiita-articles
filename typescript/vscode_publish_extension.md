@@ -10,7 +10,7 @@ private: false
 
 ですがこの通りに行っても**とんでもなく上手くいきません**でした。顛末記として記事を共有することで、これから VSCode 拡張を開発する方の参考になれば幸いです。
 
-
+この記事の手順で公開した VSCode 拡張プラグインが [Qiita Markdown Preview](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview) になります。Webpack も含め全て Typescript を使用して開発しました。Typescript で作成された拡張プラグインはそれ程多くなかったので参考にしてみてください。
 
 # 本記事で扱う内容
 
