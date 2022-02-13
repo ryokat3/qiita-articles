@@ -69,7 +69,7 @@ Qiitaの記事をブラウザでチャチャっと作ったり、更新したり
 
 ## Qiita Access Token の登録
 
-1. GitHub リポジトリの GUI から Settings >> Secrets で "Actions secrets" の画面を表示
+1. GitHub リポジトリの GUI から Settings >> Secrets で "Actions" の画面を表示
 2. 右上の "New repository secret" のボタンをクリック
 3. Name には `QIITA_ACCESS_TOKEN` と入力
 4. Value には Qiita で生成した Access Token を入力（下図）

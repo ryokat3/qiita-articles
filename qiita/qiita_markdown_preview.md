@@ -91,6 +91,8 @@ TeXで記述された数式を表示する拡張記法です。
 
 [Open Graph Protocol](https://ogp.me/)を利用した、リンク先のタイトルやサムネイルを表示するリンクを表示する記法です。
 
+リンクカードはリンク先のデータを非同期で取得して表示しています。そのため表示されるまでに遅延があります。
+
 ### Qiita 表示
 
 https://qiita.com/Qiita/items/c686397e4a0f4f11683d
@@ -106,6 +108,33 @@ Qiita拡張記法ではなく、[Qiita-Sync](https://github.com/ryokat3)によ�
 ### Qiita Markdown Preview 表示
 
 ![Title and Tag](../img/qiita_markdown_preview_title.png)
+
+# 設定
+
+### qiita-markdown-preview.status
+
+Qiita Markdown Preview の Enable/Disable の設定を行います。`enable`, `disable`, `null` の値を取ります。デフォルトは `null` です。実際の設定は以下のように決定されます。
+
+- Workspace の設定値が `enable` もしくは `disable` の場合は、実際の設定もそれに従います。
+- Workspace の設定値が `null` の場合は、実際の設定は User の設定値に従います。
+- Workspace も User も設定値が `null` の場合は、実際の設定は `enable` になります。
+
+# 関連 VSCode 拡張
+
+Qiita Markdown Preview と併用して、より Qiita Markdown に寄せる、より便利になる VSCode 拡張を紹介いたします。
+
+- [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+  
+  絵文字を表示します。\:kissing_closed_eyes:
+
+- [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
+
+  脚注を表示します。
+
+- [Markdown Converter](https://marketplace.visualstudio.com/items?itemName=manuth.markdown-converter)
+
+  Markdown を HTML や PDF に保存します。このプラグインで拡張された表示も保存されます。
+  ただしリンクカードは非同期表示になるので、一回目の保存では表示されていない場合があります。その場合二回目の保存で表示されている可能性があります。
 
 # 追記
 
