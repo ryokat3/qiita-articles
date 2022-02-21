@@ -4,8 +4,6 @@ tags:    Markdown,Qiita,TypeScript,VSCode,個人開発
 id:      fe61d9234be2e147cb7f
 private: false
 -->
-
-
 [![version](https://vsmarketplacebadge.apphb.com/version/ryokat3.vscode-qiita-markdown-preview.svg)](https://marketplace.visualstudio.com/items?itemName=ryokat3.vscode-qiita-markdown-preview)
 
 ![Qiita Markdown Preview Sample](../img/qiita_markdown_preview_sample.png)
@@ -124,7 +122,7 @@ Qiita Markdown Preview の Enable/Disable の設定を行います。`enable`, `
 Qiita Markdown Preview と併用して、より Qiita Markdown に寄せる、より便利になる VSCode 拡張を紹介いたします。
 
 - [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
-  
+
   絵文字を表示します。\:kissing_closed_eyes:
 
 - [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
@@ -138,7 +136,7 @@ Qiita Markdown Preview と併用して、より Qiita Markdown に寄せる、�
 
 # 追記
 
-今回初めて VSCode の拡張機能の実装を行いました。作成ツールが期待したように動作せず苦労の連続だったので、[その顛末を記したQiita記事](../typescript/vscode_publish_extension.md)も投稿いたしました。拡張機能作成に興味がある方は是非ご覧ください。
+今回初めて VSCode の拡張機能の実装を行いました。作成ツールが期待したように動作せず苦労の連続だったので、[その顛末を記したQiita記事](2022-02-09_Node.js_TypeScript_VSCode_35ed99ee2af2512b59bb.md)も投稿いたしました。拡張機能作成に興味がある方は是非ご覧ください。
 
 --------
 

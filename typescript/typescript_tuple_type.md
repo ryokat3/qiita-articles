@@ -1,7 +1,8 @@
 <!--
-title: TypeScriptの（tuple値じゃなくて）tuple型を操作する
-tags:  TypeScript,FunctionalProgramming
-id:    9ff10438c24a8917a8dd
+title:   TypeScriptの（tuple値じゃなくて）tuple型を操作する
+tags:    FunctionalProgramming,TypeScript
+id:      9ff10438c24a8917a8dd
+private: false
 -->
 TypeScriptのtuple型（「値」 `[4, "hello", true]`じゃなくて「型」`[number, string, boolean]`）を操作する。
 
@@ -109,7 +110,7 @@ console.log(reverse_sub(10, 100))         // 90と表示する
 TypeScriptの Key-Value のオブジェクトのKeyは変えずに、Valueだけ変えたい、関数をつかっていっぺんに変えたい、って無茶苦茶普通のことだけど、何故か標準のライブラリに見当たらない。自作は簡単だけど、変えた後のオブジェクトのValueの型が、関数の型に引きずられてぼんやりしちゃう。具体的には、
 
 ```ts
-// こんな感じのデータの値をを       
+// こんな感じのデータの値を
 const data = {
     name: "John",
     age: 26
@@ -127,8 +128,8 @@ function boxify<T>(t: T):Box<T> {
 const unexpected = Object.entries(data).reduce((acc, [key, value])=>{
     return {
         ...acc,
-        [key]: boxify(value)    
-    }    
+        [key]: boxify(value)
+    }
 }, {})
 
 // だけど unexpected.name って、エラーになっちゃうし、
@@ -173,5 +174,3 @@ const dataBox = mapobj(data, boxify)
 
 ## 参照
 ソースコードをまとめてNPMパッケージ [boost-ts](https://www.npmjs.com/package/boost-ts) として公開しました。`npm install boost-ts`でご利用ください。
-
-
