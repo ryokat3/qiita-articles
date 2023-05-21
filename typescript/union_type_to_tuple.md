@@ -1,8 +1,10 @@
 <!--
 title:   TypesScript の Union 型から Tuple 型へ変換
 tags:    FunctionalProgramming,TypeScript
+id:      23d69a0ecb758a3cbe50
 private: false
 -->
+
 
 Stackoverflow で拾ったネタの紹介記事です。
 TypeScript の型 `string | number | Date` から `[ "string", "number", "Date" ]` を導く方法です。
